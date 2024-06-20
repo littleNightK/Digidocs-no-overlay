@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- This site was created in Webflow. https://www.webflow.com --><!-- Last Published: Fri May 17 2024 04:19:46 GMT+0000 (Coordinated Universal Time) -->
+<html data-wf-domain="digidocs.webflow.io" data-wf-page="664461d50e974a5d63e7363d"
+  data-wf-site="664461d40e974a5d63e735a7" data-wf-status="1">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Digidocs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta content="Webflow" name="generator" />
+  <link href="./styles.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script
+    type="text/javascript">WebFont.load({ google: { families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Noto Sans:300,regular,500:latin,vietnamese", "Roboto:300,regular,500:latin,vietnamese"] } });</script>
+  <script
+    type="text/javascript">!function (o, c) { var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);</script>
+  <link href="https://assets-global.website-files.com/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link href="https://assets-global.website-files.com/img/webclip.png" rel="apple-touch-icon" />
+</head>
+
+<body>
+  <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
+    role="banner" class="navigation-bar w-nav">
+    <div class="container w-container"><a href="/" aria-current="page" class="brand-link w-nav-brand w--current">
+        <h1 class="brand-text">Digidocs</h1>
+      </a>
+      <nav role="navigation" class="navigation-menu w-nav-menu"><a href="index.html" aria-current="page"
+          class="navigation-link w-nav-link w--current">Home</a></nav>
+      <div class="hamburger-button w-nav-button">
+        <div class="w-icon-nav-menu"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-section centered">
+    <div data-w-id="e464d218-f801-55d1-1f50-7da00b5bfb8f" style="opacity:0" class="container-2 w-container">
+      <h1 data-ix="fade-in-bottom-page-loads" class="hero-heading">effortless document processing</h1>
+      <div data-ix="fade-in-bottom-page-loads" class="hero-subheading">digitize your paper document by scanning or
+        uploading images</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container-3 w-container">
+      <div class="section-title-group">
+        <h2 class="section-heading centered">Select your task</h2>
+      </div>
+      <div data-duration-in="300" data-duration-out="100" data-current="Tab 1" data-easing="ease"
+        class="tabs-wrapper w-tabs">
+        <div class="tab-menu">
+          <a href="table.html" class="button tab w-inline-block tab-link">
+            <div class="text-block">Table</div>
+          </a>
+          <a href="document.html" class="button tab w-inline-block tab-link">
+            <div class="text-block">Document</div>
+          </a>
+          <a href="text.html" class="button tab w-inline-block tab-link">
+            <div class="text-block">Text</div>
+          </a>
+        </div>
+        <div class="w-tab-content">
+          <div data-w-tab="Tab 1" class="tab-pane-tab-1 w-tab-pane w--tab-active">
+            <div>
+              <h2 class="heading-3">Document Recognition</h2>
+              <p class="paragraph">Document recognition will convert your document images into word
+                (.docx) document</p>
+            </div>
+            <div class="form_container">
+              <div class="form_block w-form">
+                <!-- upload form  -->
+                <form class="Input-form" name="Input-form" data-name="Input Form" method="POST"
+                  enctype="multipart/form-data">
+                  <div class="text-size-medium text-weight-semibold padding-horizontal padding-medium">
+                    Upload image or input img URL
+                  </div>
+                  <div class="file-and-url">
+                    <div class="drop-zone form_upload-div-2" style="cursor: pointer">
+                      <img class="upload-icon" loading="lazy" style="width: 20%; display: block; margin: auto;"
+                        src="https://assets-global.website-files.com/664461d40e974a5d63e735a7/6645b5e0c980b9bf82dcc8b2_Cloud%20Upload.svg"
+                        alt="" class="icon-1x1-medium align-center" />
+                      <div class="file-container">
+                        <p class="file-name"></p>
+                        <button type="button" class="remove-file" style="display: none;">x</button>
+                      </div>
+                      <input type="file" name="file" class="file" accept=".jpg, .png" style="display: none;" data-endpoint="http://localhost:8000/ocr/predict-by-file" data-method="POST">
+                    </div>
+                    <input class="text-field w-input url" maxlength="256" name="url" data-name="URL 3" data-endpoint="http://localhost:8000/ocr/predict-by-url" data-method="GET"
+                      placeholder="Input image URL" pattern="https?://.+(\.jpg|\.png)$" type="url"/>
+                  </div>
+                  <div class="display-flex is-space-between padding-horizontal padding-medium">
+                    <div class="text-color-gray">Supported formats: PNG, JPG</div>
+                    <div class="text-color-gray">Maximum size: 25MB</div>
+                  </div>
+                  <!-- camera -->
+                  <div class="text-size-medium text-weight-semibold padding-horizontal padding-medium"
+                    style="margin-top: 5%;">
+                    Or use a camera instead
+                  </div>
+                  <div class="camera-block" class="vertical-align">
+                    <div id="videoContainer" style="vertical-align: auto;">
+                      <canvas id="result"></canvas>
+                      <video id="video"></video>
+                      <canvas id="canvas"></canvas>
+                      <button id="cancel" type="button" style="display: block; margin: auto;"  class="button-2 is-upload">Cancel</button>
+                      <img id="preview-img" style="display: block; margin: auto;" data-endpoint="http://localhost:8000/ocr/predict-by-file" data-method="POST"/>
+                    </div>
+                    <img class="start-camera" src="./camera-svgrepo-com.svg" alt="Start Camera"
+                      style="cursor: pointer; width: 20%;" />
+                  </div>
+                  <div class="form_button-group">
+                    <input type="submit" data-wait="Please wait..." class="button-2 is-upload w-button"
+                      value="Upload" />
+                  </div>
+                </form>
+                <img class="loading-screen" style="display: none; margin-left: 10%;"></img>
+                <div class="loading-message text-size-medium text-weight-semibold" style="display: none;">Please wait! while the img is being processed.</div>
+                <div class="error-screen text-size-medium text-weight-semibold" style="display: none;">
+                  <div>Oops! Something went wrong while submitting.</div>
+                </div>
+                <div id="api-output-container"></div>
+                <div id="docx-preview-box"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="w-container">
+      <div class="w-row">
+        <figure class="spc w-col w-col-5">
+          <h5 class="heading-2">about Digidocs</h5>
+          <p class="paragraph-2">Digidocs make document scanning and processing free and accessible to
+            everyone. Digidocs utilize computer vision and machine learning through the PaddleOCR framework
+            with custom trained models for high performing tasks.</p>
+        </figure>
+        <div class="spc w-col w-col-2"></div>
+        <div class="w-col w-col-5">
+          <h5 class="heading">social</h5>
+          <div class="footer-link-wrapper w-clearfix"><img
+              src="https://assets-global.website-files.com/664461d40e974a5d63e735a7/664461d50e974a5d63e7368f_social-03.svg"
+              width="20" alt="" class="info-icon" /><a href="https://www.facebook.com/profile.php?id=100014231836977"
+              class="footer-link with-icon">Facebook</a></div>
+          <div class="footer-link-wrapper w-clearfix"><img
+              src="https://assets-global.website-files.com/664461d40e974a5d63e735a7/664461d50e974a5d63e7369b_social-33.svg"
+              width="20" alt="" class="info-icon" /><a href="https://github.com/littleNightK"
+              class="footer-link with-icon">Github</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"></script>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=664461d40e974a5d63e735a7"
+    type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+  <script src="./script.js" type="text/javascript"></script>
+  <script src="./upload.js" type="text/javascript"></script>
+  <script src="./API.js" type="text/javascript"></script>
+  <script src="./loadingscreen.js" type="text/javascript"></script>
+  <script src="https://docs.opencv.org/4.7.0/opencv.js" async></script>
+  <!-- warning: loading OpenCV can take some time. Load asynchronously -->
+  <script src="https://cdn.jsdelivr.net/gh/ColonelParrot/jscanify@master/src/jscanify.min.js"></script>
+</body>
+
+</html>
