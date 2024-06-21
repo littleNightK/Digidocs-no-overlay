@@ -193,56 +193,12 @@ startCameraButton.addEventListener("click", async () => {
         y2 - y1
       );
 
-      async function deskewAndDisplayImage(captureCanvas, targetElementId) {
-        cv['onRuntimeInitialized'] = async () => {
-            // Convert canvas to OpenCV Mat
-            let src = cv.imread(captureCanvas);
-            let dst = new cv.Mat();
-            let M = cv.Mat.eye(2, 3, cv.CV_32FC1);
-            let dsize = new cv.Size(src.rows, src.cols);
-    
-            // Convert to grayscale
-            cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
-    
-            // Detect edges
-            cv.Canny(src, src, 50, 200, 3);
-    
-            // Find lines
-            let lines = new cv.Mat();
-            cv.HoughLinesP(src, lines, 1, Math.PI / 180, 2, null, null, 30, 10);
-    
-            // Calculate the angle here based on the detected lines
-            // This is a simplified approach and might need adjustment
-            let angle = 0;
-            for (let i = 0; i < lines.rows; ++i) {
-                let startPoint = new cv.Point(lines.data32S[i * 4], lines.data32S[i * 4 + 1]);
-                let endPoint = new cv.Point(lines.data32S[i * 4 + 2], lines.data32S[i * 4 + 3]);
-                angle += Math.atan2(endPoint.y - startPoint.y, endPoint.x - startPoint.x);
-            }
-            angle /= lines.rows;
-            angle = angle * (180 / Math.PI);
-    
-            // Rotate the image to deskew
-            let center = new cv.Point(src.cols / 2, src.rows / 2);
-            M = cv.getRotationMatrix2D(center, angle, 1);
-            cv.warpAffine(src, dst, M, dsize, cv.INTER_LINEAR, cv.BORDER_CONSTANT, new cv.Scalar());
-    
-            // Convert the processed OpenCV image back to a Data URL
-            cv.imshow('canvasOutput', dst); // 'canvasOutput' is an id of an invisible canvas element
-            let canvas = document.getElementById('canvasOutput');
-            let newDataURL = canvas.toDataURL('image/jpeg');
-    
-            // Display the deskewed image
-            const imgElement = document.createElement("img");
-            imgElement.src = newDataURL;
-            imgElement.style.margin = "10px";
-            document.getElementById(targetElementId).appendChild(imgElement);
-    
-            // Clean up
-            src.delete(); dst.delete(); M.delete(); lines.delete();
-        };
-    }
-    deskewAndDisplayImage(captureCanvas, "preview-img");
+      const capturedImageDataURL = captureCanvas.toDataURL("image/jpeg");
+      const imgElement = document.createElement("img");
+      imgElement.src = capturedImageDataURL;
+      imgElement.style.margin = "10px";
+  
+      document.getElementById("capturedImagesContainer").appendChild(imgElement);
     });
   } else {
     // If the camera is not active, start the camera
